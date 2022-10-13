@@ -8,7 +8,7 @@
 		<version>2.2.5.RELEASE</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.example.slabiak</groupId>
+	<groupId>com.example.boivin</groupId>
 	<artifactId>appointmentscheduler</artifactId>
 	<version>1.0.4</version>
 	<name>appointmentscheduler</name>
@@ -110,7 +110,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.8</version>
+			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -190,7 +190,7 @@
 				<version>1.8.0</version>
 				<configuration>
 					<to>
-						<image>docker.io/slabiak/appointmentscheduler:${project.version}</image>
+						<image>docker.io/boivin/appointmentscheduler:${project.version}</image>
 					</to>
 					<container>
 						<ports>

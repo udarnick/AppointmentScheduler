@@ -213,8 +213,7 @@
             </tr>
         </table>
         <h2>Add Break</h2>
-        <form class="d-inline-block" th:action="@{/providers/availability/breakes/add}" th:object="${breakModel}"
-              method="POST">
+        <form class="d-inline-block" th:action="@{/providers/availability/breakes/add}" th:object="${breakModel}" method="POST">
             <input type="hidden" name="planId" th:value="${plan.id}">
             <select name="dayOfWeek">
                 <option value="monday">Monday</option>
