@@ -72,7 +72,7 @@ public class AppointmentServiceTest {
         workId = 3;
         work = new Work();
         work.setId(workId);
-        work.setDuration(60);
+        work.setDuration(20);
         provider = new Provider();
         provider.setId(providerId);
         provider.setWorkingPlan(WorkingPlan.generateDefaultWorkingPlan());
@@ -89,7 +89,7 @@ public class AppointmentServiceTest {
 
     @Test
     public void shouldBookAppointmentWhenAllConditionsMet() {
-        LocalDateTime startOfNewAppointment = LocalDateTime.of(2019, 01, 01, 6, 0);
+        LocalDateTime startOfNewAppointment = LocalDateTime.of(2019, 01, 01, 15, 0);
 
         when(workService.isWorkForCustomer(workId, customerId)).thenReturn(true);
         when(workService.getWorkById(workId)).thenReturn(work);

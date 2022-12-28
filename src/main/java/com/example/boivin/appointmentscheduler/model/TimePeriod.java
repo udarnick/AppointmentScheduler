@@ -1,13 +1,6 @@
 package com.example.boivin.appointmentscheduler.model;
 
-import com.example.boivin.appointmentscheduler.util.MyDateTimeDeserializer;
-import com.example.boivin.appointmentscheduler.util.MyDateTimeSerializer;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.util.StringUtils;
 
 import java.time.LocalTime;
 import java.util.Objects;

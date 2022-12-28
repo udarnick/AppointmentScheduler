@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WorkingPlanServiceImpl implements WorkingPlanService {
 
@@ -33,24 +35,24 @@ public class WorkingPlanServiceImpl implements WorkingPlanService {
     }
 
     @Override
-    public void addBreakToWorkingPlan(TimePeriod breakToAdd, int planId, String dayOfWeek) {
+    public void addBrakeToWorkingPlan(TimePeriod brakeToAdd, int planId, String dayOfWeek) {
         CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         WorkingPlan workingPlan = workingPlanRepository.getOne(planId);
-        if (workingPlan.getProvider().getId().equals(currentUser.getId())) {
-            throw new org.springframework.security.access.AccessDeniedException("Unauthorized");
-        }
-        workingPlan.getDay(dayOfWeek).getBreaks().add(breakToAdd);
+//        if (workingPlan.getProvider().getId().equals(currentUser.getId())) {
+//            throw new org.springframework.security.access.AccessDeniedException("Unauthorized");
+//        }
+        workingPlan.getDay(dayOfWeek).getBrakes().add(brakeToAdd);
         workingPlanRepository.save(workingPlan);
     }
 
     @Override
-    public void deleteBreakFromWorkingPlan(TimePeriod breakToDelete, int planId, String dayOfWeek) {
+    public void deleteBrakeFromWorkingPlan(TimePeriod brakeToDelete, int planId, String dayOfWeek) {
         CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         WorkingPlan workingPlan = workingPlanRepository.getOne(planId);
-        if (workingPlan.getProvider().getId().equals(currentUser.getId())) {
-            throw new org.springframework.security.access.AccessDeniedException("Unauthorized");
-        }
-        workingPlan.getDay(dayOfWeek).getBreaks().remove(breakToDelete);
+//        if (workingPlan.getProvider().getId().equals(currentUser.getId())) {
+//            throw new org.springframework.security.access.AccessDeniedException("Unauthorized");
+//        }
+        workingPlan.getDay(dayOfWeek).getBrakes().remove(brakeToDelete);
         workingPlanRepository.save(workingPlan);
     }
 

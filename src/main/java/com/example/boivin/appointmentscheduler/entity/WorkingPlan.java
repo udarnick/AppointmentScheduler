@@ -169,7 +169,7 @@ public class WorkingPlan {
 
     public static WorkingPlan generateDefaultWorkingPlan() {
         WorkingPlan wp = new WorkingPlan();
-        LocalTime defaultStartHour = LocalTime.now();
+        LocalTime defaultStartHour = LocalTime.of(8, 0);
         LocalTime defaultEndHour = defaultStartHour.plusHours(8);
         TimePeriod defaultWorkingPeriod = new TimePeriod(defaultStartHour, defaultEndHour);
         DayPlan defaultDayPlan = new DayPlan(defaultWorkingPeriod);

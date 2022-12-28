@@ -1,7 +1,5 @@
 package com.example.boivin.appointmentscheduler.model;
 
-import com.example.boivin.appointmentscheduler.util.MyDateTimeDeserializer;
-import com.example.boivin.appointmentscheduler.util.MyDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -14,52 +12,52 @@ public class DayPlan {
 
     private TimePeriod workingHours;
 
-    private List<TimePeriod> breaks;
+    private List<TimePeriod> brakes;
 
-    ArrayList<TimePeriod> timePeriodsWithBreaksExcluded = new ArrayList<>();
+    ArrayList<TimePeriod> timePeriodsWithBrakesExcluded = new ArrayList<>();
 
     public DayPlan() {
-        breaks = new ArrayList<>();
+        brakes = new ArrayList<>();
     }
 
     public DayPlan(TimePeriod workingHours) {
         this.workingHours = workingHours;
-        this.breaks = new ArrayList<>();
+        this.brakes = new ArrayList<>();
     }
 
-    public List<TimePeriod> getTimePeriodsWithBreaksExcluded() {
+    public List<TimePeriod> gettimePeriodsWithBrakesExcluded() {
 
-        timePeriodsWithBreaksExcluded.add(getWorkingHours());
-        List<TimePeriod> breaks = getBreaks();
+        timePeriodsWithBrakesExcluded.add(getWorkingHours());
+        List<TimePeriod> brakes = getBrakes();
 
-        if (!breaks.isEmpty()) {
+        if (!brakes.isEmpty()) {
             ArrayList<TimePeriod> toAdd = new ArrayList<>();
-            for (TimePeriod break1 : breaks) {
-                if (break1.getStart().isBefore(workingHours.getStart())) {
-                    break1.setStart(workingHours.getStart());
+            for (TimePeriod brake1 : brakes) {
+                if (brake1.getStart().isBefore(workingHours.getStart())) {
+                    brake1.setStart(workingHours.getStart());
                 }
-                if (break1.getEnd().isAfter(workingHours.getEnd())) {
-                    break1.setEnd(workingHours.getEnd());
+                if (brake1.getEnd().isAfter(workingHours.getEnd())) {
+                    brake1.setEnd(workingHours.getEnd());
                 }
-                for (TimePeriod period : timePeriodsWithBreaksExcluded) {
-                    if (break1.getStart().equals(period.getStart()) && break1.getEnd().isAfter(period.getStart()) && break1.getEnd().isBefore(period.getEnd())) {
-                        period.setStart(break1.getEnd());
+                for (TimePeriod period : timePeriodsWithBrakesExcluded) {
+                    if (brake1.getStart().equals(period.getStart()) && brake1.getEnd().isAfter(period.getStart()) && brake1.getEnd().isBefore(period.getEnd())) {
+                        period.setStart(brake1.getEnd());
                     }
-                    if (break1.getStart().isAfter(period.getStart()) && break1.getStart().isBefore(period.getEnd()) && break1.getEnd().equals(period.getEnd())) {
-                        period.setEnd(break1.getStart());
+                    if (brake1.getStart().isAfter(period.getStart()) && brake1.getStart().isBefore(period.getEnd()) && brake1.getEnd().equals(period.getEnd())) {
+                        period.setEnd(brake1.getStart());
                     }
-                    if (break1.getStart().isAfter(period.getStart()) && break1.getEnd().isBefore(period.getEnd())) {
-                        toAdd.add(new TimePeriod(period.getStart(), break1.getStart()));
-                        period.setStart(break1.getEnd());
+                    if (brake1.getStart().isAfter(period.getStart()) && brake1.getEnd().isBefore(period.getEnd())) {
+                        toAdd.add(new TimePeriod(period.getStart(), brake1.getStart()));
+                        period.setStart(brake1.getEnd());
                     }
                 }
             }
-            timePeriodsWithBreaksExcluded.addAll(toAdd);
-            Collections.sort(timePeriodsWithBreaksExcluded);
+            timePeriodsWithBrakesExcluded.addAll(toAdd);
+            Collections.sort(timePeriodsWithBrakesExcluded);
         }
 
 
-        return timePeriodsWithBreaksExcluded;
+        return timePeriodsWithBrakesExcluded;
     }
 
     public TimePeriod getWorkingHours() {
@@ -70,20 +68,20 @@ public class DayPlan {
         this.workingHours = workingHours;
     }
 
-    public List<TimePeriod> getBreaks() {
-        return breaks;
+    public List<TimePeriod> getBrakes() {
+        return brakes;
     }
 
-    public void setBreaks(List<TimePeriod> breaks) {
-        this.breaks = breaks;
+    public void setBrakes(List<TimePeriod> brakes) {
+        this.brakes = brakes;
     }
 
-    public void removeBreak(TimePeriod breakToRemove) {
-        breaks.remove(breakToRemove);
+    public void removeBrake(TimePeriod brakeToRemove) {
+        brakes.remove(brakeToRemove);
     }
 
-    public void addBreak(TimePeriod breakToAdd) {
-        breaks.add(breakToAdd);
+    public void addBrake(TimePeriod brakeToAdd) {
+        brakes.add(brakeToAdd);
     }
 
 }

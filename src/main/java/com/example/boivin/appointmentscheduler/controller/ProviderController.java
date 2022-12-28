@@ -109,7 +109,7 @@ public class ProviderController {
     @GetMapping("/availability")
     public String showProviderAvailability(Model model, @AuthenticationPrincipal CustomUserDetails currentUser) {
         model.addAttribute("plan", workingPlanService.getWorkingPlanByProviderId(currentUser.getId()));
-        model.addAttribute("breakModel", new TimePeriod());
+        model.addAttribute("brakeModel", new TimePeriod());
         return "users/showOrUpdateProviderAvailability";
     }
 
@@ -119,15 +119,15 @@ public class ProviderController {
         return "redirect:/providers/availability";
     }
 
-    @PostMapping("/availability/breakes/add")
-    public String processProviderAddBreak(@ModelAttribute("breakModel") TimePeriod breakToAdd, @RequestParam("planId") int planId, @RequestParam("dayOfWeek") String dayOfWeek) {
-        workingPlanService.addBreakToWorkingPlan(breakToAdd, planId, dayOfWeek);
+    @PostMapping("/availability/brakes/add")
+    public String processProviderAddBrake(@ModelAttribute("brakeModel") TimePeriod brakeToAdd, @RequestParam("planId") int planId, @RequestParam("dayOfWeek") String dayOfWeek) {
+        workingPlanService.addBrakeToWorkingPlan(brakeToAdd, planId, dayOfWeek);
         return "redirect:/providers/availability";
     }
 
-    @PostMapping("/availability/breakes/delete")
-    public String processProviderDeleteBreak(@ModelAttribute("breakModel") TimePeriod breakToDelete, @RequestParam("planId") int planId, @RequestParam("dayOfWeek") String dayOfWeek) {
-        workingPlanService.deleteBreakFromWorkingPlan(breakToDelete, planId, dayOfWeek);
+    @PostMapping("/availability/brakes/delete")
+    public String processProviderDeletebrake(@ModelAttribute("brakeModel") TimePeriod brakeToDelete, @RequestParam("planId") int planId, @RequestParam("dayOfWeek") String dayOfWeek) {
+        workingPlanService.deleteBrakeFromWorkingPlan(brakeToDelete, planId, dayOfWeek);
         return "redirect:/providers/availability";
     }
 

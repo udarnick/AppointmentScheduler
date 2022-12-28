@@ -54,7 +54,7 @@ Please enter valid mobile phone
 mvn spring-boot:run
 ```
 
-The app will start running at <http://localhost:8080>
+The app will start running at <http://localhost:8081>
 
 **5. Login to admin account**
 
@@ -83,7 +83,7 @@ To book a new appointment customer needs to click `New Appointment` button on al
 
 Available hours are calculatated with getAvailableHours function from AppointmentService:
 
-`List<TimePeroid> getAvailableHours(int providerId,int customerId, int workId, LocalDate date)`
+`List<TimePeriod> getAvailableHours(int providerId,int customerId, int workId, LocalDate date)`
 
 This function works as follow:
 

@@ -556,7 +556,7 @@ function computeGreatestUnit(start, end) {
         unit = exports.unitsDesc[i];
         val = computeRangeAs(unit, start, end);
         if (val >= 1 && isInt(val)) {
-            break;
+            brake;
         }
     }
     return unit; // will be "milliseconds" if nothing else matches
@@ -696,7 +696,7 @@ function mergeProps(propObjs, complexProps) {
                 }
                 else if (val !== undefined) {
                     dest[name] = val; // if there were no objects, this value will be used
-                    break;
+                    brake;
                 }
             }
             // if the trailing values were objects, use the merged value
@@ -1977,7 +1977,7 @@ function isHitPropsWithin(subHit, superHit) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = '3.10.0';
-// When introducing internal API incompatibilities (where fullcalendar plugins would break),
+// When introducing internal API incompatibilities (where fullcalendar plugins would brake),
 // the minor version of the calendar should be upped (ex: 2.7.2 -> 2.8.0)
 // and the below integer should be incremented.
 exports.internalApiVersion = 12;
@@ -4957,7 +4957,7 @@ function renderParsedFormat(parsedFormat, date1, date2, separator, isRTL) {
         // date-formatting postfix character, then don't consume it. Consider it unique date-content.
         // TODO: make configurable
         if (rightI - 1 === leftI && renderedParts1[rightI] === '.') {
-            break;
+            brake;
         }
         rightStr = renderedParts1[rightI] + rightStr;
     }
@@ -5003,7 +5003,7 @@ function parseFormatString(formatStr) {
     };
 }
 /*
-Break the formatting string into an array of chunks.
+brake the formatting string into an array of chunks.
 A 'maybe' chunk will have nested chunks.
 */
 function chunkFormatString(formatStr) {
@@ -6665,12 +6665,12 @@ var DayTableMixin = /** @class */ (function (_super) {
             }
             date.add(1, 'days');
         }
-        if (this.breakOnWeeks) {
+        if (this.brakeOnWeeks) {
             // count columns until the day-of-week repeats
             firstDay = dayDates[0].day();
             for (daysPerRow = 1; daysPerRow < dayDates.length; daysPerRow++) {
                 if (dayDates[daysPerRow].day() === firstDay) {
-                    break;
+                    brake;
                 }
             }
             rowCnt = Math.ceil(dayDates.length / daysPerRow);
@@ -7961,7 +7961,7 @@ var BasicView = /** @class */ (function (_super) {
         return new subclass(this);
     };
     BasicView.prototype.executeDateRender = function (dateProfile) {
-        this.dayGrid.breakOnWeeks = /year|month|week/.test(dateProfile.currentRangeUnit);
+        this.dayGrid.brakeOnWeeks = /year|month|week/.test(dateProfile.currentRangeUnit);
         _super.prototype.executeDateRender.call(this, dateProfile);
     };
     BasicView.prototype.renderSkeleton = function () {
@@ -9360,7 +9360,7 @@ var JsonFeedEventSource = /** @class */ (function (_super) {
         var requestParams = this.buildRequestParams(start, end, timezone);
         // todo: eventually handle the promise's then,
         // don't intercept success/error
-        // tho will be a breaking API change
+        // tho will be a brakeing API change
         this.calendar.pushLoading();
         return Promise_1.default.construct(function (onResolve, onReject) {
             $.ajax($.extend({}, // destination
@@ -10356,7 +10356,7 @@ var DateComponent = /** @class */ (function (_super) {
         for (uid in childrenByUid) {
             hit = childrenByUid[uid].queryHit(leftOffset, topOffset);
             if (hit) {
-                break;
+                brake;
             }
         }
         return hit;
@@ -13514,7 +13514,7 @@ function buildSlotSegLevels(segs) {
         // go through all the levels and stop on the first level where there are no collisions
         for (j = 0; j < levels.length; j++) {
             if (!computeSlotSegCollisions(seg, levels[j]).length) {
-                break;
+                brake;
             }
         }
         seg.level = j;
@@ -13802,7 +13802,7 @@ var DayGridEventRenderer = /** @class */ (function (_super) {
             // loop through levels, starting with the topmost, until the segment doesn't collide with other segments
             for (j = 0; j < levels.length; j++) {
                 if (!isDaySegCollision(seg, levels[j])) {
-                    break;
+                    brake;
                 }
             }
             // `j` now holds the desired subrow index
@@ -14176,7 +14176,7 @@ var ListView = /** @class */ (function (_super) {
                     footprint.unzonedRange.endMs < dayRanges[dayIndex + 1].startMs + this.nextDayThreshold) {
                     seg.endMs = footprint.unzonedRange.endMs;
                     seg.isEnd = true;
-                    break;
+                    brake;
                 }
             }
         }
