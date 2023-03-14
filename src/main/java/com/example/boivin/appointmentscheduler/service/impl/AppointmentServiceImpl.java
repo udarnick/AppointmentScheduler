@@ -102,7 +102,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> providerAppointments = getAppointmentsByProviderAtDay(providerId, date);
         List<Appointment> customerAppointments = getAppointmentsByCustomerAtDay(customerId, date);
 
-        List<TimePeriod> availablePeriods = selectedDay.gettimePeriodsWithBrakesExcluded();
+        List<TimePeriod> availablePeriods = selectedDay.getTimePeriodsWithBrakesExcluded();
         availablePeriods = excludeAppointmentsFromTimePeriods(availablePeriods, providerAppointments);
 
         availablePeriods = excludeAppointmentsFromTimePeriods(availablePeriods, customerAppointments);

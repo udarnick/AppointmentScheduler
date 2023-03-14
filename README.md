@@ -39,7 +39,7 @@ Please enter valid mobile phone
 
 ```
 
-- After that run MySQL script to create tables `src/main/resources/appointmentscheduler.sql`
+- After that run MySQL script to create tables `src/main/resources/setup_appointmentscheduler.sql`
 
 **3. Configure enviroment variables**
 

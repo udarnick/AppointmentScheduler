@@ -1,9 +1,5 @@
 package com.example.boivin.appointmentscheduler.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,9 +21,11 @@ public class DayPlan {
         this.brakes = new ArrayList<>();
     }
 
-    public List<TimePeriod> gettimePeriodsWithBrakesExcluded() {
+    public List<TimePeriod> getTimePeriodsWithBrakesExcluded() {
 
-        timePeriodsWithBrakesExcluded.add(getWorkingHours());
+        if (!timePeriodsWithBrakesExcluded.contains(getWorkingHours())) {
+            timePeriodsWithBrakesExcluded.add(getWorkingHours());
+        }
         List<TimePeriod> brakes = getBrakes();
 
         if (!brakes.isEmpty()) {

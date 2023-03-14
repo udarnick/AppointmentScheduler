@@ -1,9 +1,6 @@
-CREATE USER 'peter'@'172.26.0.3' IDENTIFIED BY 'peter' WITH PASSWORD 'peter';
-
-CREATE USER 'peter'@'%' IDENTIFIED BY 'peter' WITH PASSWORD 'peter';
-
-CREATE DATABASE appointmentscheduler;
-
-GRANT ALL PRIVILEGES ON appointmentscheduler.* to 'peter'@'172.26.0.3';
+CREATE USER 'peter'@'localhost' IDENTIFIED BY 'peter';
 
 GRANT ALL PRIVILEGES ON appointmentscheduler.* to 'peter'@'%';
+
+GRANT PROCESS ON *.* TO  'peter'@'%';
+
