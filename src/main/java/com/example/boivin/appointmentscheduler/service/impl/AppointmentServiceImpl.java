@@ -102,11 +102,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> providerAppointments = getAppointmentsByProviderAtDay(providerId, date);
         List<Appointment> customerAppointments = getAppointmentsByCustomerAtDay(customerId, date);
 
-        List<TimePeriod> availablePeriods = selectedDay.gettimePeriodsWithBrakesExcluded();
-        availablePeriods = excludeAppointmentsFromTimePeriods(availablePeriods, providerAppointments);
+        List<TimePeriod> availablePeroids = selectedDay.getTimePeriodsWithBreaksExcluded();
+        availablePeroids = excludeAppointmentsFromTimePeriods(availablePeroids, providerAppointments);
 
-        availablePeriods = excludeAppointmentsFromTimePeriods(availablePeriods, customerAppointments);
-        return calculateAvailableHours(availablePeriods, workService.getWorkById(workId));
+        availablePeroids = excludeAppointmentsFromTimePeriods(availablePeroids, customerAppointments);
+        return calculateAvailableHours(availablePeroids, workService.getWorkById(workId));
     }
 
     @Override
@@ -146,11 +146,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     public List<TimePeriod> calculateAvailableHours(List<TimePeriod> availableTimePeriods, Work work) {
         ArrayList<TimePeriod> availableHours = new ArrayList();
         for (TimePeriod period : availableTimePeriods) {
-            TimePeriod workPeriod = new TimePeriod(period.getStart(), period.getStart().plusMinutes(work.getDuration()));
-            while (workPeriod.getEnd().isBefore(period.getEnd()) || workPeriod.getEnd().equals(period.getEnd())) {
-                availableHours.add(new TimePeriod(workPeriod.getStart(), workPeriod.getStart().plusMinutes(work.getDuration())));
-                workPeriod.setStart(workPeriod.getStart().plusMinutes(work.getDuration()));
-                workPeriod.setEnd(workPeriod.getEnd().plusMinutes(work.getDuration()));
+            TimePeriod workPeroid = new TimePeriod(period.getStart(), period.getStart().plusMinutes(work.getDuration()));
+            while (workPeroid.getEnd().isBefore(period.getEnd()) || workPeroid.getEnd().equals(period.getEnd())) {
+                availableHours.add(new TimePeriod(workPeroid.getStart(), workPeroid.getStart().plusMinutes(work.getDuration())));
+                workPeroid.setStart(workPeroid.getStart().plusMinutes(work.getDuration()));
+                workPeroid.setEnd(workPeroid.getEnd().plusMinutes(work.getDuration()));
             }
         }
         return availableHours;
@@ -363,7 +363,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         Work work = workService.getWorkById(workId);
         TimePeriod timePeriod = new TimePeriod(start.toLocalTime(), start.toLocalTime().plusMinutes(work.getDuration()));
-        
         return getAvailableHours(providerId, customerId, workId, start.toLocalDate()).contains(timePeriod);
     }
 

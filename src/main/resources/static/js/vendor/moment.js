@@ -1833,7 +1833,7 @@
                 }
                 if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
                     //the next array item is better than a shallower substring of this one
-                    brake;
+                    break;
                 }
                 j--;
             }
@@ -2224,7 +2224,7 @@
                 if (isoDates[i][1].exec(match[1])) {
                     dateFormat = isoDates[i][0];
                     allowTime = isoDates[i][2] !== false;
-                    brake;
+                    break;
                 }
             }
             if (dateFormat == null) {
@@ -2236,7 +2236,7 @@
                     if (isoTimes[i][1].exec(match[3])) {
                         // match[2] should be 'T' or space
                         timeFormat = (match[2] || ' ') + isoTimes[i][0];
-                        brake;
+                        break;
                     }
                 }
                 if (timeFormat == null) {
@@ -3282,14 +3282,14 @@
         units = normalizeUnits(units);
 
         switch (units) {
-            case 'year': output = monthDiff(this, that) / 12; brake;
-            case 'month': output = monthDiff(this, that); brake;
-            case 'quarter': output = monthDiff(this, that) / 3; brake;
-            case 'second': output = (this - that) / 1e3; brake; // 1000
-            case 'minute': output = (this - that) / 6e4; brake; // 1000 * 60
-            case 'hour': output = (this - that) / 36e5; brake; // 1000 * 60 * 60
-            case 'day': output = (this - that - zoneDelta) / 864e5; brake; // 1000 * 60 * 60 * 24, negate dst
-            case 'week': output = (this - that - zoneDelta) / 6048e5; brake; // 1000 * 60 * 60 * 24 * 7, negate dst
+            case 'year': output = monthDiff(this, that) / 12; break;
+            case 'month': output = monthDiff(this, that); break;
+            case 'quarter': output = monthDiff(this, that) / 3; break;
+            case 'second': output = (this - that) / 1e3; break; // 1000
+            case 'minute': output = (this - that) / 6e4; break; // 1000 * 60
+            case 'hour': output = (this - that) / 36e5; break; // 1000 * 60 * 60
+            case 'day': output = (this - that - zoneDelta) / 864e5; break; // 1000 * 60 * 60 * 24, negate dst
+            case 'week': output = (this - that - zoneDelta) / 6048e5; break; // 1000 * 60 * 60 * 24 * 7, negate dst
             default: output = this - that;
         }
 
@@ -3478,35 +3478,35 @@
         switch (units) {
             case 'year':
                 time = startOfDate(this.year(), 0, 1);
-                brake;
+                break;
             case 'quarter':
                 time = startOfDate(this.year(), this.month() - this.month() % 3, 1);
-                brake;
+                break;
             case 'month':
                 time = startOfDate(this.year(), this.month(), 1);
-                brake;
+                break;
             case 'week':
                 time = startOfDate(this.year(), this.month(), this.date() - this.weekday());
-                brake;
+                break;
             case 'isoWeek':
                 time = startOfDate(this.year(), this.month(), this.date() - (this.isoWeekday() - 1));
-                brake;
+                break;
             case 'day':
             case 'date':
                 time = startOfDate(this.year(), this.month(), this.date());
-                brake;
+                break;
             case 'hour':
                 time = this._d.valueOf();
                 time -= mod$1(time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE), MS_PER_HOUR);
-                brake;
+                break;
             case 'minute':
                 time = this._d.valueOf();
                 time -= mod$1(time, MS_PER_MINUTE);
-                brake;
+                break;
             case 'second':
                 time = this._d.valueOf();
                 time -= mod$1(time, MS_PER_SECOND);
-                brake;
+                break;
         }
 
         this._d.setTime(time);
@@ -3526,35 +3526,35 @@
         switch (units) {
             case 'year':
                 time = startOfDate(this.year() + 1, 0, 1) - 1;
-                brake;
+                break;
             case 'quarter':
                 time = startOfDate(this.year(), this.month() - this.month() % 3 + 3, 1) - 1;
-                brake;
+                break;
             case 'month':
                 time = startOfDate(this.year(), this.month() + 1, 1) - 1;
-                brake;
+                break;
             case 'week':
                 time = startOfDate(this.year(), this.month(), this.date() - this.weekday() + 7) - 1;
-                brake;
+                break;
             case 'isoWeek':
                 time = startOfDate(this.year(), this.month(), this.date() - (this.isoWeekday() - 1) + 7) - 1;
-                brake;
+                break;
             case 'day':
             case 'date':
                 time = startOfDate(this.year(), this.month(), this.date() + 1) - 1;
-                brake;
+                break;
             case 'hour':
                 time = this._d.valueOf();
                 time += MS_PER_HOUR - mod$1(time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE), MS_PER_HOUR) - 1;
-                brake;
+                break;
             case 'minute':
                 time = this._d.valueOf();
                 time += MS_PER_MINUTE - mod$1(time, MS_PER_MINUTE) - 1;
-                brake;
+                break;
             case 'second':
                 time = this._d.valueOf();
                 time += MS_PER_SECOND - mod$1(time, MS_PER_SECOND) - 1;
-                brake;
+                break;
         }
 
         this._d.setTime(time);

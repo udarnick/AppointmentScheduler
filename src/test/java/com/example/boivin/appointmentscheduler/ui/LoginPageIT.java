@@ -1,6 +1,5 @@
 package com.example.boivin.appointmentscheduler.ui;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +31,6 @@ import static org.junit.Assert.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(initializers = LoginPageIT.Initializer.class)
 @ActiveProfiles("integration-test")
-@Ignore
 public class LoginPageIT {
 
     @LocalServerPort
