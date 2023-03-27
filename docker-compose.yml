@@ -1,8 +1,5 @@
 version: '3.7'
 
-networks:
-  test:
-
 services:
 
   mysqldb:
@@ -13,29 +10,21 @@ services:
     environment:
       MYSQL_DATABASE: appointmentscheduler
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: peter
-      MYSQL_PASSWORD: peter
     volumes:
       - ./target/data:/var/lib/mysql
       - ./src/main/resources:/docker-entrypoint-initdb.d
-    networks:
-      - test
 
   backend:
-    image: boivin/appointmentschedulerdocker:1.0.9
+    image: boivin/appointmentschedulerdocker:1.0.6
     ports:
       - "8081:8081"
-      - "5005:5005"
     environment:
       MYSQL_HOST: mysqldb
-      MYSQL_USER: peter
-      MYSQL_PASSWORD: peter
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       MYSQL_PORT: 3306
     restart: always
     build: .
     depends_on:
       - mysqldb
-    networks:
-        - test
     platform: linux/arm64/v8
-    command: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5005 -jar /project/target/appointmentscheduler-1.0.8.jar
