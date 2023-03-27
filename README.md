@@ -1,11 +1,11 @@
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/boivin/AppointmentScheduler)
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/slabiak/AppointmentScheduler)
 
 # Appointment scheduler
 
 >This is a Spring Boot Web Application to manage and schedule appointments between providers and customers. It has many features such as automatic invoicing, email notifications, appointments cancelation, providers individual working plans with brakes etc.
 
 
-<a href="https://github.com/boivin/boivin.github.io/blob/master/images/appointmentscheduler/calendar.png?raw=true"><img src="https://github.com/boivin/boivin.github.io/blob/master/images/appointmentscheduler/calendar.png?raw=true" width="600"></a>
+<a href="https://github.com/slabiak/slabiak.github.io/blob/master/images/appointmentscheduler/calendar.png?raw=true"><img src="https://github.com/slabiak/slabiak.github.io/blob/master/images/appointmentscheduler/calendar.png?raw=true" width="600"></a>
 
 ## Demo
 
@@ -29,14 +29,13 @@ This application is being described in [devoxify.com](https://devoxify.com/) blo
 **1. Clone the application**
 
 ```bash
-git clone https://github.com/boivin/AppointmentScheduler.git
+git clone https://github.com/slabiak/AppointmentScheduler.git
 ```
 
 **2. Create MySQL database**
 
 ```bash
-Please enter valid mobile phone
-
+create database appointmentscheduler
 ```
 
 - After that run MySQL script to create tables `src/main/resources/appointmentscheduler.sql`
